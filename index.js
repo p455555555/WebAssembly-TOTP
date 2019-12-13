@@ -1,8 +1,9 @@
-import { readFileSync } from 'fs';
-import * as loader from '@assemblyscript/loader';
+Object.defineProperty(exports, '__esModule', { value: true });
+const fs_1 = require('fs');
+const loader_1 = require('@assemblyscript/loader');
 
-const TotpModule = loader.instantiateSync(
-    readFileSync(`${__dirname}/build/optimized.wasm`),
+const TotpModule = loader_1.instantiateSync(
+    fs_1.readFileSync(`${__dirname}/build/optimized.wasm`),
     {
         env: {
             abort(_msg, _file, line, column) {
@@ -24,7 +25,7 @@ const TotpModule = loader.instantiateSync(
     }
 );
 
-export default class TOTP {
+class TOTP {
 
     /**
 	 * 生成app可识别二维码链接
@@ -69,3 +70,5 @@ export default class TOTP {
         return result;
     }
 };
+
+exports.default = TOTP;

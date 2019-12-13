@@ -1,6 +1,6 @@
 {
     "name": "webassembly-totp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "TOTP算法WebAssembly版本，比JavaScript版本有着更快的运行速度",
     "main": "index.js",
     "types": "index.d.ts",
