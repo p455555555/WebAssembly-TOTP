@@ -1,0 +1,62 @@
+{
+    "name": "webassembly-totp",
+    "version": "1.0.0",
+    "description": "TOTP算法WebAssembly版本，比JavaScript版本有着更快的运行速度",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "keywords": [
+        "webassembly",
+        "totp",
+        "hotp"
+    ],
+    "files": [
+        "build",
+        "index.js",
+        "index.d.ts"
+    ],
+    "scripts": {
+        "jest": "npm run asbuild && npm run jest",
+        "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
+        "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
+        "build": "rm -rf build && npm run asbuild:untouched && npm run asbuild:optimized",
+        "test": "jest test/wasm.test.ts"
+    },
+    "devDependencies": {
+        "@assemblyscript/loader": "^0.8.1",
+        "@types/jest": "^24.0.19",
+        "@types/node": "^10.12.18",
+        "assemblyscript": "^0.8.1",
+        "jest": "^24.9.0",
+        "ts-jest": "^24.1.0",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.7.3"
+    },
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "ts"
+        ],
+        "rootDir": "test",
+        "testRegex": ".test.ts$",
+        "transform": {
+            "^.+\\.(t|j)s$": "ts-jest"
+        },
+        "coverageDirectory": "../coverage",
+        "testEnvironment": "node"
+    },
+    "engines": {
+        "node": ">=8.0.0",
+        "npm": ">=5.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/p455555555/WebAssembly-TOTP.git"
+    },
+    "bugs": {
+        "url": "https://github.com/p455555555/WebAssembly-TOTP/issues"
+    },
+    "homepage": "https://github.com/p455555555/WebAssembly-TOTP",
+    "author": "chenjunhong <p455555555@gmail.com>",
+    "license": "MIT"
+}
