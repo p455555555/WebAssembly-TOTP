@@ -2,7 +2,7 @@ import totp from '../index.js';
 
 const testKey = 'LFLFMU2SGVCUIUCZKBMEKRKLIQ';
   
-test('获取TOTP code,code应该是6位数', () => {
+test('生成uri', () => {
     const result = totp.getQRUri(testKey);
     expect(result).toBe('otpauth://totp/somelabel?secret=JRDEYRSNKUZFGR2WINKUSVKDLJFUETKFJNJEWTCJKE======');
 });
